@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	scanner := bufioNewScanner(os.Stidin)
+	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Testing this package")
 
 	for scanner.Scan() {
@@ -27,10 +27,8 @@ func main() {
 	}
 
 	// check for errors during scanning and print them
-
-
-
-
-
+	if err := scanner.Err(); err != nil {
+		fmt.Println("Error reading input:", err)
+	}
 
 }
