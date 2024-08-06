@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"bufio"
+	"strings"
 )
 
 func main() {
@@ -12,28 +13,28 @@ func main() {
 	tasks := []string{}
 
 	for {
-		fmt.Println("Enter command (add, remove, complete, lists, or exit):")
+		fmt.Println("Enter command (add, remove, lists, or exit):")
 		//Read the input from the user
 
-		input := scanner.Scan()
+		scanner.Scan()
 
-		//process the input (print the input)
-		fmt.Println("You entered:", input)
 
-		//optionally break the loop based on some condition
-
-		if !input {
-			break
-		}
-
-		output := scanner.Text()
+		output := strings.TrimSpace(scanner.Text())
 		switch output {
 		case "add":
 			
-			fmt.Println("Task added Successfully")
-			task := scanner.Text()
+			fmt.Println("Enter task you wish to add")
+			scanner.Scan()
+			task := strings.TrimSpace(scanner.Text())
 			tasks = append(tasks, task)
-			fmt.Println(tasks)
+			
+
+		case "lists":
+			fmt.Println("Your tasks are: ")
+			for i, v := range tasks{
+				fmt.Printf("task %v is %v\n", i , v)
+
+			}
 		}
 	}
 	
