@@ -18,7 +18,6 @@ func main() {
 
 		scanner.Scan()
 
-
 		output := strings.TrimSpace(scanner.Text())
 		switch output {
 		case "add":
@@ -27,6 +26,13 @@ func main() {
 			scanner.Scan()
 			task := strings.TrimSpace(scanner.Text())
 			tasks = append(tasks, task)
+			fmt.Println(" ==> Task added successfully <==")
+		
+		case "remove":
+
+			fmt.Println("To remove a task you'd love to add, type `lists` to list it")
+			remove := len(tasks)
+			fmt.Println(remove)
 			
 
 		case "lists":
@@ -35,6 +41,11 @@ func main() {
 				fmt.Printf("task %v is %v\n", i , v)
 
 			}
+		case "exit":
+			fmt.Println("Terminating now!!")
+			return
+		default:
+			fmt.Println("Invalid Command!!! Type any of the commands suggested")
 		}
 	}
 	
