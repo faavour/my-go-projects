@@ -34,7 +34,7 @@ func main() {
 			scanner.Scan()
 			tasked := strings.TrimSpace(scanner.Text())
 
-			//create a logic to  heck f the slite exists
+			//create a logic to check if the value to remove exists
 			index := -1
 
 			for i, v := range tasks{
@@ -44,6 +44,17 @@ func main() {
 				}
 
 			}
+
+			//Next we can check if the value requested existed
+			if index != -1{
+				//Remove the particular element requested by slicing the slice
+
+				tasks = append(tasks[:index], tasks[index+1:]...)
+				fmt.Println("Updated list now:", tasks)
+			}
+
+
+
 
 
 			
