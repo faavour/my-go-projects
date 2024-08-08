@@ -31,14 +31,27 @@ func main() {
 		case "remove":
 
 			fmt.Println("To remove a task you'd love to add, type `lists` to list it")
-			remove := len(tasks)
-			fmt.Println(remove)
+			scanner.Scan()
+			tasked := strings.TrimSpace(scanner.Text())
+
+			//create a logic to  heck f the slite exists
+			index := -1
+
+			for i, v := range tasks{
+				if v == tasked{
+					index = i
+					break
+				}
+
+			}
+
+
 			
 
 		case "lists":
 			fmt.Println("Your tasks are: ")
 			for i, v := range tasks{
-				fmt.Printf("task %v is %v\n", i , v)
+				fmt.Printf("task %v is %v\n", i+1 , v)
 
 			}
 		case "exit":
