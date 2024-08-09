@@ -30,9 +30,11 @@ func main() {
 		
 		case "remove":
 
-			fmt.Println("To remove a task you'd love to add, type `lists` to list it")
+			fmt.Println("Enter a task name from the tasks added which you want to remove")
 			scanner.Scan()
 			tasked := strings.TrimSpace(scanner.Text())
+
+			
 
 			//create a logic to check if the value to remove exists
 			index := -1
@@ -50,20 +52,20 @@ func main() {
 				//Remove the particular element requested by slicing the slice
 
 				tasks = append(tasks[:index], tasks[index+1:]...)
-				fmt.Println("Updated list now:", tasks)
+				fmt.Println("Updated list now is:")
+				for i, v := range tasks{
+					fmt.Printf("task %v is %v\n", i+1 , v)
+				}
 			}
-
-
-
-
-
-			
-
 		case "lists":
 			fmt.Println("Your tasks are: ")
-			for i, v := range tasks{
-				fmt.Printf("task %v is %v\n", i+1 , v)
-
+			if len(tasks) == 0{
+				fmt.Println("You have to add a task in order to get it listed ")
+			} else {
+				for i, v := range tasks{
+					fmt.Printf("task %v is %v\n", i+1 , v)
+	
+				}
 			}
 		case "exit":
 			fmt.Println("Terminating now!!")
