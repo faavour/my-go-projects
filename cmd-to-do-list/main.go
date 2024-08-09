@@ -31,7 +31,7 @@ func main() {
 		
 		case "remove":
 
-			fmt.Println("Enter a task name from the tasks added which you want to remove")
+			fmt.Println("Enter a task number from the list to remove")
 			scanner.Scan()
 			tasked := strings.TrimSpace(scanner.Text())
 
@@ -47,8 +47,8 @@ func main() {
 			}
 
 			//validate if the index is within the range of tasks in the slice
-			if index < 0 || index >= len(tasks) {
-				fmt.Println("Invalid Index, Eneter a valid Number/Index")
+			if index < 1 || index >= len(tasks) {
+				fmt.Println("Invalid Index, Enter a valid Number/Index")
 				break
 			}
 
@@ -65,7 +65,7 @@ func main() {
 				fmt.Println("You have to add a task in order to get it listed ")
 			} else {
 				for i, v := range tasks{
-					fmt.Printf("task %v is %v\n", i+1 , v)
+					fmt.Printf("%v. is %v\n", i+1 , v)
 	
 				}
 			}
