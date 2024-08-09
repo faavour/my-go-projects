@@ -46,19 +46,18 @@ func main() {
 				break
 			}
 
+			//validate if the index is within the range of tasks in the slice
+			if index < 0 || index >= len(tasks) {
+				fmt.Println("Invalid Index, Eneter a valid Number/Index")
+				break
+			}
 
-			//Next we can check if the value requested existed
-			if index != -1{
-				//Remove the particular element requested by slicing the slice
-
-				tasks = append(tasks[:index], tasks[index+1:]...)
-
-
-
-				fmt.Println("Updated list now is:")
-				for i, v := range tasks{
-					fmt.Printf("task %v is %v\n", i+1 , v)
-				}
+			//Remove the particular element requested by slicing the slice
+			tasks = append(tasks[:index], tasks[index+1:]...)
+			fmt.Println("Task removed successfully....")
+			fmt.Println("Updated list now is:")
+			for i, v := range tasks{
+				fmt.Printf("%v. is %v\n", i+1 , v)
 			}
 		case "lists":
 			fmt.Println("Your tasks are: ")
