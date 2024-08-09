@@ -6,6 +6,7 @@ import (
 	"os"
 	"bufio"
 	"strings"
+	"strconv"
 )
 
 func main() {
@@ -37,21 +38,23 @@ func main() {
 			
 
 			//create a logic to check if the value to remove exists
-			index := -1
-
-			for i, v := range tasks{
-				if v == tasked{
-					index = i
-					break
-				}
-
+			// convert the string input to integer && insert a condition to catch any error
+			
+			index, err := strconv.Atoi(tasked)
+			if err != nil {
+				fmt.Println("Invalid input. Please enter a valid integer.")
+				break
 			}
+
 
 			//Next we can check if the value requested existed
 			if index != -1{
 				//Remove the particular element requested by slicing the slice
 
 				tasks = append(tasks[:index], tasks[index+1:]...)
+
+
+
 				fmt.Println("Updated list now is:")
 				for i, v := range tasks{
 					fmt.Printf("task %v is %v\n", i+1 , v)
