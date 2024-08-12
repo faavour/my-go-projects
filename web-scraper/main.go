@@ -11,19 +11,15 @@ func main()  {
 	c := colly.NewCollector(
 
 		//This should  visit only the domains listed here 
-		colly.AllowedDomains("go.dev/doc/effective_go", "go.dev/ref/spec "),
+		colly.AllowedDomains("go.dev/doc/effective_go", "go.dev/ref/spec"),
 	)
 
+	// extracts the URL from elements with href attribute
+	c.OnHTML("a[href]", func(e *colly.HTMLElement)  {
+		link := e.Attr("href")
 
-	// Find and visit all links
-	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
-		e.Request.Visit(e.Attr("href"))
+		//Print link
+		fmt.Printf("Link found: %q -> %s\n", e.Text, link)
 	})
-
-	c.OnRequest(func(r *colly.Request) {
-		fmt.Println("Visiting", r.URL)
-	})
-
-	c.Visit("http://go-colly.org/")
 	
 }
