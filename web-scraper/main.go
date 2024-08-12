@@ -2,12 +2,18 @@ package main
 
 import (
 	"fmt"
+	"github.com/gocolly/colly/v2"
 )
 
 func main()  {
-	url := "https://go.dev/doc/effective_go"
+	
+	//Instantiate collector
+	c := colly.NewCollector(
 
-	c := colly.NewCollector()
+		//This should  visit only the domains listed here 
+		colly.AllowedDomains("go.dev/doc/effective_go", "go.dev/ref/spec "),
+	)
+
 
 	// Find and visit all links
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
